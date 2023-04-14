@@ -14,6 +14,7 @@ itl_api_code_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "It
 sys.path.append(itl_api_code_path)
 # import TrafficLightItem
 from itlsimulator.ItlApiCode.TrafficLightItem import TrafficLightItem
+from itlsimulator.ItlApiCode.TimedTrafficLightItem import *
 
 class SubscriberThread(QThread):
     msg_received = pyqtSignal(str)
@@ -54,7 +55,7 @@ class MainWindow(QMainWindow):
         self.central_widget.mainLabel.setText("Subscribed message:");
 
         #configure the ITL
-        self.trafficItem= TrafficLightItem("ITL")
+        self.trafficItem= TimedTrafficLightItem("ITL")
         layout=self.central_widget.widgetITL.layout()
         layout.addWidget(self.trafficItem)
 
