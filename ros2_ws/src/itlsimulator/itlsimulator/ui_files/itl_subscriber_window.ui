@@ -43,7 +43,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QGroupBox" name="groupBox_2">
+        <widget class="QGroupBox" name="displayMessageBox">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -73,6 +73,59 @@
               <pointsize>14</pointsize>
              </font>
             </property>
+            <property name="undoRedoEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="comStatusBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QCheckBox" name="statusCheckBox">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Show messages status</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+               <property name="tristate">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>
@@ -91,6 +144,49 @@
              </spacer>
             </item>
             <item>
+             <widget class="QPushButton" name="onComButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>OnCom</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="offComButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>OffCom</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="clearScreenButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -98,8 +194,15 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
               <property name="text">
-               <string>publish</string>
+               <string>Clear</string>
               </property>
              </widget>
             </item>
@@ -108,9 +211,12 @@
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::MinimumExpanding</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>40</width>
+                <width>10</width>
                 <height>20</height>
                </size>
               </property>
@@ -138,7 +244,7 @@
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>240</height>
+              <height>160</height>
              </size>
             </property>
            </spacer>
@@ -152,11 +258,11 @@
           <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
+          <enum>QSizePolicy::Minimum</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>80</width>
+           <width>10</width>
            <height>20</height>
           </size>
          </property>
@@ -168,7 +274,7 @@
       <property name="minimumSize">
        <size>
         <width>300</width>
-        <height>500</height>
+        <height>280</height>
        </size>
       </property>
       <property name="title">
@@ -198,7 +304,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>240</height>
+              <height>120</height>
              </size>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_4"/>
@@ -208,7 +314,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="controlsBox">
+        <widget class="QGroupBox" name="itlControlsBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -237,9 +349,9 @@
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="sendMessageButton_2">
+               <widget class="QPushButton" name="autoItlButton">
                 <property name="enabled">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -247,15 +359,22 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>---</string>
+                 <string>Auto ITL</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="sendMessageButton_3">
+               <widget class="QPushButton" name="offItlButton">
                 <property name="enabled">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -263,8 +382,15 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>---</string>
+                 <string>Off ITL</string>
                 </property>
                </widget>
               </item>
