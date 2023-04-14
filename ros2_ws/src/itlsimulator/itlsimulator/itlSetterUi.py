@@ -73,7 +73,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
-        ui_file_path = os.path.join(os.path.dirname(__file__), 'ui_files','mainwindow.ui')
+        ui_file_path = os.path.join(os.path.dirname(__file__), 'ui_files','itl_publisher_window.ui')
         uic.loadUi(ui_file_path, self.central_widget)
          # Set the window title
         self.setWindowTitle("ITL ROS 2 :: Publisher")
