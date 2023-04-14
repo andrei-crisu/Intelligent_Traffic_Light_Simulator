@@ -1,0 +1,7 @@
+# excluded files an folders
+# folders
+__pycache__/
+__pycache__/*
+
+#files
+/*.pyc
