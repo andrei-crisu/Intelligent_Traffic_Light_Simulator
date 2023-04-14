@@ -70,6 +70,13 @@ ros2 run demo_nodes_cpp talker
 
 
 git tag -a v0.0.0 -m "Initial release"
+git push --set-upstream origin <branch_name>
+
+git diff
+git diff --staged
+git diff --cached --name-only
+
+
 
 ----------------------------------------------------
 ----------------------------------------------------
