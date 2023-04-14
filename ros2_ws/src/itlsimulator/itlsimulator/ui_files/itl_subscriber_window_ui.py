@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\crisu\Desktop\RC_App_ROS2\workspace2\ros2_ws\src\itlsimulator\itlsimulator\ui_files\itl_subscriber_window.ui'
+# Form implementation generated from reading ui file 'c:\Users\crisu\Desktop\RC_App_ROS2\trafficSimulator_rc_project\ros2_ws\src\itlsimulator\itlsimulator\ui_files\itl_subscriber_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
