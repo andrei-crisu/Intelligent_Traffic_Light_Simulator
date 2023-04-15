@@ -77,6 +77,7 @@ git diff --staged
 git diff --cached --name-only
 
 
+git push -u <remote> <local_branch_name>:<remote_branch_name>
 
 ----------------------------------------------------
 ----------------------------------------------------
