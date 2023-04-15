@@ -18,11 +18,12 @@ itl_api_code_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "It
 sys.path.append(itl_api_code_path)
 #import 
 from itlsimulator.ItlComProtocol.txMsgCreator import *
+from itlsimulator.ItlComProtocol.comConstants import *
 
 
 class TalkerNode:
     def __init__(self):
-        self.node = rclpy.create_node('talker_node')
+        self.node = rclpy.create_node('setterUiNode')
         self.publisher = self.node.create_publisher(String, 'topic007', 10)
 
     def send_message(self, message):
@@ -65,36 +66,31 @@ class MainWindow(QMainWindow):
     def setItlOnGreen(self):
         self.trafficItem.ItlSetCurrentColorState(ItlStates.STATE_GREEN)
         self.addMessageToHistoryBox("Set State :: GREEN")
-        green_cmd="GREEN"
-        self.sendCommand(green_cmd)
+        self.sendCommand(ItlCmdMessage.GREEN_STATE)
 
     def setItlOnYellow(self):
         self.trafficItem.ItlSetCurrentColorState(ItlStates.STATE_YELLOW)
         self.addMessageToHistoryBox("Set State :: YELLOW")
-        yellow_cmd="YELLOW"
-        self.sendCommand(yellow_cmd)
+        self.sendCommand(ItlCmdMessage.YELLOW_STATE)
     
     def setItlOnRed(self):
         self.trafficItem.ItlSetCurrentColorState(ItlStates.STATE_RED)
         self.addMessageToHistoryBox("Set State :: RED")
-        red_cmd="RED"
-        self.sendCommand(red_cmd)
+        self.sendCommand(ItlCmdMessage.RED_STATE)
 
     def itlShutDown(self):
         self.trafficItem.setItlOff()
         self.addMessageToHistoryBox("Set State :: OFF")
         self.central_widget.offButton.setEnabled(False)
         self.central_widget.autoButton.setEnabled(True)
-        off_cmd="OFF"
-        self.sendCommand(off_cmd)
+        self.sendCommand(ItlCmdMessage.OFF_STATE)
 
     def itlAutoRun(self):
         self.trafficItem.timedStart(8,2,10)
         self.addMessageToHistoryBox("Set State :: AUTO")
         self.central_widget.offButton.setEnabled(True)
         self.central_widget.autoButton.setEnabled(False)
-        auto_cmd="AUTO"
-        self.sendCommand(auto_cmd)
+        self.sendCommand(ItlCmdMessage.AUTO_STATE)
     
     def doNothing(self):
         # this slot function is used by the doNothingButton
@@ -102,27 +98,30 @@ class MainWindow(QMainWindow):
         
     def publishMessage(self):
         #get the raw message from the ui 
-        message = self.central_widget.textEdit.toPlainText()
+        info_message = self.central_widget.textEdit.toPlainText()
+        if(len(info_message)==0):
+            info_message='EMPTY_MESSAGE_NOTHING_IMPORTANT'
         #create an instance of the MsgCreator
-        local_msg=MsgCreator()
+        msg_creator=MsgCreator()
         #process the raw message to obtain a ready to send message
-        message=local_msg.getItlMessage(message)
+        message=msg_creator.buildItlMessage(info_message,ItlMessageTypes.MSGT_INFORMATION,
+                                                ItlEncryptionOptions.STANDARD_ENCRYPTION_METHOD)
         #show message in the history
-        self.addMessageToHistoryBox(message)
+        self.addMessageToHistoryBox("----------------")
+        self.addMessageToHistoryBox("RAW INFO:: "+info_message)
+        self.addMessageToHistoryBox("FULL SENT MESSAGE:: "+message)
         #send message
         self.talker.send_message(message)
 
     def sendCommand(self,cmd_message):
         cmd_creator=MsgCreator()
-        cmd_to_send=cmd_creator.getItlMessage(cmd_message)
-        self.addMessageToHistoryBox(cmd_to_send)
+        cmd_to_send=cmd_creator.buildItlMessage(cmd_message,ItlMessageTypes.MSGT_COMMAND,
+                                                ItlEncryptionOptions.STANDARD_ENCRYPTION_METHOD)
+        self.addMessageToHistoryBox("----------------")
+        self.addMessageToHistoryBox("RAW COMMAND:: "+cmd_message)
+        self.addMessageToHistoryBox("FULL SENT MESSAGE:: "+cmd_to_send)
+        #send message
         self.talker.send_message(cmd_to_send)
-
-
-    def send_random_message(self):
-         local_msg=MsgCreator()
-         message=local_msg.getItlMessage()
-         self.talker.send_message(message)
 
 def main():
     # Initialize the ROS 2 node
