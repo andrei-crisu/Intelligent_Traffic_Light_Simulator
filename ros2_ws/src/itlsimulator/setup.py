@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 package_name = 'itlsimulator'
-package_version = '0.0.3'
+package_version = '0.0.4'
 
 setup(
     name=package_name,
