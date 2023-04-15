@@ -199,7 +199,7 @@ class Ui_Widget(object):
         self.autoItlButton.setObjectName("autoItlButton")
         self.horizontalLayout_3.addWidget(self.autoItlButton)
         self.offItlButton = QtWidgets.QPushButton(self.itlControlsBox)
-        self.offItlButton.setEnabled(True)
+        self.offItlButton.setEnabled(False)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -228,7 +228,7 @@ class Ui_Widget(object):
         _translate = QtCore.QCoreApplication.translate
         Widget.setWindowTitle(_translate("Widget", "Widget"))
         self.mainLabel.setText(_translate("Widget", "Mesaj:"))
-        self.statusCheckBox.setText(_translate("Widget", "Show messages status"))
+        self.statusCheckBox.setText(_translate("Widget", "Show messages"))
         self.onComButton.setText(_translate("Widget", "OnCom"))
         self.offComButton.setText(_translate("Widget", "OffCom"))
         self.clearScreenButton.setText(_translate("Widget", "Clear"))

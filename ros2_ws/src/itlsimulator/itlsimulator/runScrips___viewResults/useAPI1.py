@@ -71,7 +71,7 @@ class MainWindow(QWidget):
         self.autoButton.setEnabled(True)
 
     def autoSet(self):
-        self.timedTrafficLight.timedStart(8,4,16)
+        self.timedTrafficLight.timedStart(8,2,10)
         self.autoButton.setEnabled(False)
 
 if __name__ == '__main__':

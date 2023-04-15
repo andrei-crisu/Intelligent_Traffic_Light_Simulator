@@ -41,9 +41,14 @@ class SubscriberThread(QThread):
 
 
 class MainWindow(QMainWindow):
+    COM_UPDATE_GUI_OFF=False
+    COM_UPDATE_GUI_ON=True
+
     def __init__(self, topic):
         super().__init__()
 
+        #define some class specific variables
+        self.comStatusUpdateGui=self.COM_UPDATE_GUI_ON
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
         ui_file_path = os.path.join(os.path.dirname(__file__), 'ui_files','itl_subscriber_window.ui')
@@ -59,24 +64,63 @@ class MainWindow(QMainWindow):
         layout=self.central_widget.widgetITL.layout()
         layout.addWidget(self.trafficItem)
 
+        #connect ui controls to the corresponding functions + other ui configurations
+        self.central_widget.offComButton.clicked.connect(self.deactivateMsgDisplay)
+        self.central_widget.onComButton.clicked.connect(self.activateMsgDisplay)
+        self.central_widget.clearScreenButton.clicked.connect(self.clearMsgScreen)
+        self.central_widget.autoItlButton.clicked.connect(self.startTrafficLight)
+        self.central_widget.offItlButton.clicked.connect(self.shutDownTrafficLight)
+
         # Create a subscriber thread to the topic
         self.subscriber_thread = SubscriberThread(topic)
         self.subscriber_thread.msg_received.connect(self.update_gui)
         self.subscriber_thread.start()
 
     def update_gui(self, msg):
-        if len(msg)>=30 and len(msg)<=32:
-            color="black"
-        else:
-            color="red"
-        # Update the text in the QTextEdit widget with the most recent message
-        text_cursor = self.central_widget.textEdit.textCursor()
-        text_cursor.movePosition(QTextCursor.End)
-        text_cursor.insertHtml(f"<span style=\"color:{color}\">{msg}</span><br>")
-        self.central_widget.textEdit.setTextCursor(text_cursor)
-        self.central_widget.textEdit.ensureCursorVisible()
-        self.trafficItem.ItlNextColorState()
+        if(self.comStatusUpdateGui==self.COM_UPDATE_GUI_ON):
+            if len(msg)>=30 and len(msg)<=32:
+                color="black"
+            else:
+                color="red"
+            # Update the text in the QTextEdit widget with the most recent message
+            text_cursor = self.central_widget.textEdit.textCursor()
+            text_cursor.movePosition(QTextCursor.End)
+            text_cursor.insertHtml(f"<span style=\"color:{color}\">{msg}</span><br>")
+            self.central_widget.textEdit.setTextCursor(text_cursor)
+            self.central_widget.textEdit.ensureCursorVisible()
         QApplication.processEvents()
+
+    def deactivateMsgDisplay(self):
+        self.comStatusUpdateGui=self.COM_UPDATE_GUI_OFF
+        self.central_widget.offComButton.setEnabled(False)
+        self.central_widget.onComButton.setEnabled(True)
+        self.central_widget.statusCheckBox.setChecked(False)
+        self.central_widget.textEdit.append("DISPLAY MESSAGES=OFF\n")
+
+
+    def activateMsgDisplay(self):
+        self.comStatusUpdateGui=self.COM_UPDATE_GUI_ON
+        self.central_widget.offComButton.setEnabled(True)
+        self.central_widget.onComButton.setEnabled(False)
+        self.central_widget.statusCheckBox.setChecked(True)
+        self.central_widget.textEdit.append("DISPLAY MESSAGES=ON\n")
+
+
+    def clearMsgScreen(self):
+        self.central_widget.textEdit.clear()
+
+    def startTrafficLight(self):
+        self.trafficItem.timedStart(8,2,10)
+        self.central_widget.textEdit.append("LOCAL OVERWRITE: ITL::auto cmd\n")
+        self.central_widget.autoItlButton.setEnabled(False)
+        self.central_widget.offItlButton.setEnabled(True)
+
+    def shutDownTrafficLight(self):
+        self.trafficItem.setItlOff()
+        self.central_widget.textEdit.append("LOCAL OVERWRITE: ITL::off cmd\n")
+        self.central_widget.autoItlButton.setEnabled(True)
+        self.central_widget.offItlButton.setEnabled(False)
+
 
 
 def main(args=None):

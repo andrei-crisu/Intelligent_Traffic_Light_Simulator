@@ -24,12 +24,12 @@ class MsgCreator:
     
     def componenetFactory(self,dataString):
         msgString=''
-        msgID=self.type_selector()
+        msgID=self.get_formatted_current_datetime()
         msgType=self.type_selector()
         msgDataLen=len(dataString)
         msgData=dataString
         msgSecurityString='$-0-$'
-        msgString=msgID+'#'+msgType+"#"+msgDataLen+"#"+msgData+"#"+msgSecurityString
+        msgString=msgID+'#'+msgType+"#"+str(msgDataLen)+"#"+msgData+"#"+msgSecurityString
         return msgString
     
     def getItlMessage(self,dataString='0xDEF'):

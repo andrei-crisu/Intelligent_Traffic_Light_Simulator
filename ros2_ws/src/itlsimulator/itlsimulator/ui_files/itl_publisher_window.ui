@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -56,7 +56,7 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>300</height>
+        <height>224</height>
        </size>
       </property>
       <property name="title">
@@ -156,10 +156,16 @@
               <item>
                <widget class="QTextEdit" name="textEdit">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
                 </property>
                 <property name="maximumSize">
                  <size>
@@ -169,7 +175,7 @@
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>10</pointsize>
                  </font>
                 </property>
                </widget>
@@ -186,7 +192,7 @@
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>40</width>
+                    <width>10</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -208,7 +214,7 @@
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgb(85, 170, 255);</string>
+                   <string notr="true">background-color: rgba(85, 255, 127, 120);</string>
                   </property>
                   <property name="text">
                    <string>Publish</string>
@@ -241,7 +247,7 @@
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -361,7 +367,7 @@
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -483,7 +489,7 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
+                  <width>10</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -503,8 +509,8 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>300</width>
-            <height>200</height>
+            <width>160</width>
+            <height>60</height>
            </size>
           </property>
           <property name="title">
@@ -536,8 +542,8 @@
              </property>
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>100</height>
+               <width>60</width>
+               <height>60</height>
               </size>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -666,7 +672,9 @@
          </property>
          <property name="font">
           <font>
-           <pointsize>14</pointsize>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
         </widget>
