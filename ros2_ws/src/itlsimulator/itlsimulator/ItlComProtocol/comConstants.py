@@ -19,12 +19,12 @@ class ItlEncryptionOptions:
 
 #encryption keys
 class ItlEncryptionKeys:
-    SHIFT_KEY_NO_1=17
-    SHIFT_KEY_NO_2=33
-    SHIFT_KEY_NO_3=47
-    MULTIPLY_KEY_NO_1=3
-    MULTIPLY_KEY_NO_2=5
-    MULTIPLY_KEY_NO_3=7
+    SHIFT_KEY_NO_1=11
+    SHIFT_KEY_NO_2=13
+    SHIFT_KEY_NO_3=17
+    MULTIPLY_KEY_NO_1=2
+    MULTIPLY_KEY_NO_2=3
+    MULTIPLY_KEY_NO_3=4
 
 
 #in this class are provided the message types

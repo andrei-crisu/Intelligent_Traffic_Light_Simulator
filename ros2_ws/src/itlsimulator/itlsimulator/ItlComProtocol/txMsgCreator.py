@@ -46,6 +46,10 @@ class MsgCreator:
 
         msgToSend=msgID+'#'+msgType+"#"+msgDataLen+"#"+msgData+"#"+securityType
 
+        secondEncryption=EncryptionEngine(key=ItlEncryptionKeys.SHIFT_KEY_NO_2,
+                                          multiplier=ItlEncryptionKeys.MULTIPLY_KEY_NO_1)
+        msgToSend=secondEncryption.encrypt(msgToSend)
+
         return msgToSend
 
 

@@ -51,7 +51,7 @@ class TimedTrafficLightItem(TrafficLightItem):
         self.countdown_yellow=self.__YELLOW_COLOR_TIME
         self.countdown_green=self.__GREEN_COLOR_TIME
         self.countdown_timer.start(1000) # update every 1 second
-        self.ItlSetCurrentColorState(startingState)
+        self.ItlSetState(startingState)
 
     def _updateCountdownLabel(self):
         # decrement the countdown value and update the label
@@ -94,3 +94,8 @@ class TimedTrafficLightItem(TrafficLightItem):
         self.countdown_yellow=self.__YELLOW_COLOR_TIME
         self.countdown_green=self.__GREEN_COLOR_TIME
         self._updateCountdownLabel()
+
+    def ItlSetCurrentColorState(self,state):
+        self.ItlSetState(state)
+        self.countdown_timer.stop()
+        self.countdown_label.setText(str(0))

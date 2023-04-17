@@ -46,16 +46,22 @@ ros2 run itlsimulator listener
 ----------------------------------------------------
 entry_points={
         'console_scripts': [
+    
             'talker = itlsimulator.pubGuiNode:main',
             'listener = itlsimulator.subGuiNode:main',
             'stalker = itlsimulator.simplepublisher:main',
             'slistener = itlsimulator.simplesubscriber:main',
             'itlsubgui = itlsimulator.itl_subscriber:main',
             'itlpubgui = itlsimulator.itl_publisher:main',
+
+
             'getterUi = itlsimulator.itlGetterUi:main',
             'setterUi = itlsimulator.itlSetterUi:main',
-        ],
-    },
+            'androidGet = itlsimulator.androidgetter:main',
+            'pirateShark = itlsimulator.pirateSubscriber:main',
+            'hackerShark = itlsimulator.hackerPublisher:main'
+        ]
+    }
 ----------------------------------------------------
 cd PATH_TO_THE_ROOT
 call C:\dev\ros2_foxy\local_setup.bat
@@ -69,7 +75,7 @@ ros2 run demo_nodes_cpp talker
 ----------------------------------------------------
 
 
-git tag -a v0.0.4 -m "Mature release"
+git tag -a v0.0.5 -m "Release before faculty presentation"
 git push --set-upstream origin <branch_name>
 
 git diff
@@ -80,4 +86,15 @@ git diff --cached --name-only
 git push -u <remote> <local_branch_name>:<remote_branch_name>
 
 ----------------------------------------------------
+1.Open your command prompt or terminal.
+
+2.Navigate to the directory where you cloned the repository using the "cd" command.
+
+3.Check which remote repository you are currently connected to by running the command:
+
+git remote -v
+
+3.If you see the remote repository you want to detach from, run the command:
+
+git remote rm origin
 ----------------------------------------------------

@@ -28,7 +28,10 @@ class MsgExtract:
 
 
     def extractItlMessage(self,message_to_extract=""):
-        #status
+        #remove first encryption
+        secondEncryption=EncryptionEngine(key=ItlEncryptionKeys.SHIFT_KEY_NO_2,
+                                          multiplier=ItlEncryptionKeys.MULTIPLY_KEY_NO_1)
+        message_to_extract=secondEncryption.decrypt(message_to_extract)
 
         mesg_components=message_to_extract.split("#")
         if len(mesg_components)!=ItlFildsLengths.NUMBER_OF_FIELDS:
