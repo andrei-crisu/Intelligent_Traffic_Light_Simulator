@@ -41,7 +41,7 @@ class TimedTrafficLightItem(TrafficLightItem):
             font.setPointSize(self.MAX_LABEL_HEIGHT)
         self.countdown_label.setFont(font)
 
-    def timedStart(self, valueRed=10,valueYellow=3,valueGreen=10,startingState=ItlStates.STATE_RED):
+    def timedStart(self, valueRed=10,valueYellow=3,valueGreen=10,startingState=ItlStates.STATE_GREEN):
         # start the countdown timer with the specified value
         self.__RED_COLOR_TIME=valueRed
         self.__YELLOW_COLOR_TIME=valueYellow

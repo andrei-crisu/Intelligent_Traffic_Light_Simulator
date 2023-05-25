@@ -14,6 +14,7 @@ class ItlColors:
 class ItlStates:
     #states
     STATE_OFF=0
-    STATE_RED = 1
+    STATE_GREEN = 1
     STATE_YELLOW = 2
-    STATE_GREEN = 3
+    STATE_RED = 3
+
