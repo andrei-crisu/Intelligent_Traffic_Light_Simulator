@@ -56,7 +56,7 @@ class TrafficLightItem(QWidget):
     def ItlNextColorState(self):
         self.__trafficLightInstace._nextState()
 
-    def ItlSetCurrentColorState(self,currentColorState):
+    def ItlSetState(self,currentColorState):
         self.__trafficLightInstace._setCurrentState(currentColorState)
 
     def _ItlTurnOff(self):

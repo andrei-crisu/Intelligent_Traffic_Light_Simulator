@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 package_name = 'itlsimulator'
-package_version = '0.0.0'
+package_version = '0.0.5'
 
 setup(
     name=package_name,
@@ -46,14 +46,20 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+    
             'talker = itlsimulator.pubGuiNode:main',
             'listener = itlsimulator.subGuiNode:main',
             'stalker = itlsimulator.simplepublisher:main',
             'slistener = itlsimulator.simplesubscriber:main',
             'itlsubgui = itlsimulator.itl_subscriber:main',
             'itlpubgui = itlsimulator.itl_publisher:main',
+
+
             'getterUi = itlsimulator.itlGetterUi:main',
-            'setterUi = itlsimulator.itlSetterUi:main'
+            'setterUi = itlsimulator.itlSetterUi:main',
+            'androidGet = itlsimulator.androidgetter:main',
+            'pirateShark = itlsimulator.pirateSubscriber:main',
+            'hackerShark = itlsimulator.hackerPublisher:main'
         ]
     }
 )

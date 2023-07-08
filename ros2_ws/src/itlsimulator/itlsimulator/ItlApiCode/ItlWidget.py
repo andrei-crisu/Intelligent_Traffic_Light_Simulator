@@ -103,8 +103,8 @@ class ItlWidget(QWidget):
     def _setCurrentState(self,state):
 
         self.__currentState=state
-        if self.__currentState >ItlStates.STATE_GREEN:
-            self.__currentState=ItlStates.STATE_RED
+        if self.__currentState >ItlStates.STATE_RED:
+            self.__currentState=ItlStates.STATE_GREEN
         
         if self.__currentState <ItlStates.STATE_OFF:
             self.__currentState=ItlStates.STATE_OFF
