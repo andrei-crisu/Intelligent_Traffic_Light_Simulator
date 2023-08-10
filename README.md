@@ -1,6 +1,19 @@
 # Intelligent_Traffic_Light_Simulator
 
 This project is written in Python and uses ROS2 for communication architecture. 
+<br><br><br>
+
+## The communication architecture (ROS2)
+<br>
+<p align="center">
+  <img src="https://github.com/andrei-crisu/Intelligent_Traffic_Light_Simulator/assets/68897925/9fdeb724-7473-4622-8b9f-7123e69e19ef" alt=" ROS2 Architecture">
+</p>
+
+## The message structure
+<br>
+<p align="center">
+  <img src="https://github.com/andrei-crisu/Intelligent_Traffic_Light_Simulator/assets/68897925/468ca6d4-6a49-4523-818d-9e0829e1c0e8" alt="The message structure">
+</p>
 
 ## Subscriber node
 
